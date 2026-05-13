@@ -1,18 +1,23 @@
 name: cheki-stock-check
+
 on:
-schedule:
-- cron: '0,30 * * * *'
-workflow_dispatch:
+  schedule:
+    - cron: '0,30 * * * *'
+  workflow_dispatch:
+
 jobs:
-check:
-runs-on: ubuntu-latest
-steps:
-- uses: actions/checkout@v4
-- name: Setup Python
-uses: actions/setup-python@v5
-with:
-python-version: '3.12'
-- name: Install dependencies
-run: pip install requests
-- name: Run stock check
-run: python .github/scripts/check_stock.py
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run stock check
+        run: python .github/scripts/check_stock.py

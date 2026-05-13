@@ -1,31 +1,18 @@
-完璧です！`.github / workflows / check_stock.yml` になっていますね。
-
-次に左側の大きいテキストエリア（「Enter file contents here」）をクリックして、以下を全部コピペしてください：
-
-```yaml
-name: チェキフィルム在庫チェック
-
+name: cheki-stock-check
 on:
-  schedule:
-    - cron: '0,30 * * * *'
-  workflow_dispatch:
-
+schedule:
+- cron: '0,30 * * * *'
+workflow_dispatch:
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Python セットアップ
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: 依存ライブラリインストール
-        run: pip install requests
-
-      - name: 在庫チェック実行
-        run: python .github/scripts/check_stock.py
-```
-
-貼り付けたら右上の緑の **Commit changes...** を押してください。
+check:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v4
+- name: Setup Python
+uses: actions/setup-python@v5
+with:
+python-version: '3.12'
+- name: Install dependencies
+run: pip install requests
+- name: Run stock check
+run: python .github/scripts/check_stock.py

@@ -1,4 +1,3 @@
-```python
 import requests
 import sys
 
@@ -73,6 +72,3 @@ if __name__ == "__main__":
     for p in PRODUCTS:
         check(p)
     print("完了")
-```
-
-貼り付けたら右上の緑の **Commit changes...** ボタンを押して、もう一度 **Commit changes** を押してください。
